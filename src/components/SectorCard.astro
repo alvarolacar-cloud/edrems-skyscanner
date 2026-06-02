@@ -11,7 +11,7 @@ interface Props {
 const { slug, name, icon, image, demand, subtitle } = Astro.props;
 ---
 
-<a href={`/sectores/${slug}`} class="group block bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+<a href={`/sectores/${slug}`} class="group block bg-white rounded shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200">
   <div class="relative h-48 w-full overflow-hidden">
     <img src={image} alt={`Sector ${name}`} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

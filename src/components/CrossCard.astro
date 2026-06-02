@@ -10,7 +10,7 @@ interface Props {
 const { sectorSlug, ciudadSlug, sectorName, ciudadName, image } = Astro.props;
 ---
 
-<article class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col">
+<article class="bg-white rounded shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 overflow-hidden flex flex-col">
   <div class="relative h-40">
     <img src={image} alt={`${sectorName} en ${ciudadName}`} class="w-full h-full object-cover" loading="lazy" />
     <button class="absolute top-3 right-3 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm" aria-label="Guardar oportunidad">
@@ -25,7 +25,7 @@ const { sectorSlug, ciudadSlug, sectorName, ciudadName, image } = Astro.props;
       <p class="flex items-center"><span class="w-2 h-2 rounded-full bg-yellow-400 mr-2"></span> Competencia media</p>
     </div>
     <div class="mt-auto">
-      <a href={`/sectores/${sectorSlug}-${ciudadSlug}`} class="block w-full text-center px-4 py-2 bg-gray-50 hover:bg-primary hover:text-white border border-gray-200 hover:border-primary rounded-md text-sm font-medium text-gray-700 transition-colors">
+      <a href={`/sectores/${sectorSlug}-${ciudadSlug}`} class="block w-full text-center px-4 py-2 bg-gray-50 hover:bg-primary hover:text-white border border-gray-200 hover:border-primary rounded text-sm font-medium text-gray-700 transition-colors">
         Ver oportunidad
       </a>
     </div>
