@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { servicios } from '../data/content';
+---
+
+<Layout
+  title="Cómo Funciona - LocalRank"
+  description="Conoce nuestro proceso paso a paso para posicionar tu negocio en Google Maps y atraer clientes de tu ciudad."
+>
+  <div class="bg-dark text-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Así de fácil es conseguir más clientes</h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Un sistema probado para ganar visibilidad en tu ciudad y convertir búsquedas en ventas reales.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <article class="bg-gray-50 p-8 rounded-xl relative border border-gray-100">
+          <div class="absolute -top-6 -left-6 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg">1</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Cuéntanos tu negocio y tu ciudad</h3>
+          <p class="text-gray-600">Nos dices qué haces y dónde quieres crecer. Identificamos tu mercado objetivo de inmediato.</p>
+        </article>
+
+        <article class="bg-gray-50 p-8 rounded-xl relative border border-gray-100">
+          <div class="absolute -top-6 -left-6 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg">2</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Analizamos oportunidades</h3>
+          <p class="text-gray-600">Estudiamos la demanda real, tu competencia local y el potencial de facturación.</p>
+        </article>
+
+        <article class="bg-gray-50 p-8 rounded-xl relative border border-gray-100">
+          <div class="absolute -top-6 -left-6 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg">3</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Tu plan personalizado</h3>
+          <p class="text-gray-600">Te mostramos una estrategia clara y adaptada a tu presupuesto para ganar visibilidad.</p>
+        </article>
+
+        <article class="bg-gray-50 p-8 rounded-xl relative border border-gray-100">
+          <div class="absolute -top-6 -left-6 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg">4</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Implementamos y mides</h3>
+          <p class="text-gray-600">Optimizamos tu presencia y empiezas a recibir llamadas medibles de clientes listos para comprar.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-10">Nuestro Sistema Completo</h2>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <ul class="divide-y divide-gray-100">
+          {servicios.map(servicio => (
+            <li class="p-6 flex items-center text-lg font-medium text-gray-700">
+              <svg class="h-6 w-6 text-primary mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              {servicio}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="mt-10 text-center">
+        <a href="/valoracion" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-primary hover:bg-primary-dark transition-colors shadow-md">
+          Solicita tu valoración
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

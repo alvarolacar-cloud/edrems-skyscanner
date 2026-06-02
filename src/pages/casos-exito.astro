@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SuccessCard from '../components/SuccessCard.astro';
+import { casosExito } from '../data/content';
+---
+
+<Layout
+  title="Casos de Éxito - LocalRank"
+  description="Descubre cómo negocios locales como el tuyo han multiplicado sus clientes y llamadas gracias al SEO local."
+>
+  <div class="bg-dark text-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Casos de Éxito Reales</h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Negocios locales que ya reciben más clientes cada mes gracias a nuestra estrategia de posicionamiento.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {casosExito.map(caso => (
+          <SuccessCard name={caso.name} location={caso.location} metric={caso.metric} desc={caso.desc} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

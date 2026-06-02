@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectorCard from '../components/SectorCard.astro';
+import { sectores } from '../data/content';
+---
+
+<Layout
+  title="Sectores - LocalRank"
+  description="Descubre todas las especialidades y sectores donde LocalRank puede ayudarte a captar más clientes en tu ciudad."
+>
+  <div class="bg-dark text-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Sectores y negocios locales</h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Somos especialistas en captación de clientes locales. Descubre las oportunidades disponibles para tu tipo de negocio.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sectores.map(s => (
+          <SectorCard slug={s.slug} name={s.name} icon={s.icon} image={s.image} demand={s.demand} subtitle={s.subtitle} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">¿No encuentras tu sector?</h2>
+      <p class="text-lg text-gray-600 mb-8">Si tienes un negocio local que necesita captar clientes en su ciudad, probablemente podamos ayudarte. Solicita una valoración gratuita y analizaremos tu caso.</p>
+      <a href="/valoracion" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-primary hover:bg-primary-dark transition-colors shadow-md">
+        Analizar mi negocio gratis
+      </a>
+    </div>
+  </section>
+</Layout>
