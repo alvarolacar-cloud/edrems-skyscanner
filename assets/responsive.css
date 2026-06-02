@@ -6,6 +6,11 @@
   max-width: 100%;
 }
 
+.worker {
+  object-fit: cover !important;
+  object-position: left bottom !important;
+}
+
 @media (max-width: 1360px) {
   .voda-nav {
     padding-inline: 24px;
@@ -1241,6 +1246,10 @@
   font-weight: 900;
 }
 
+.booking-card .price-row strong {
+  color: #e60000;
+}
+
 .rail-next {
   position: absolute;
   z-index: 6;
@@ -1536,5 +1545,138 @@
 
   .popular-links {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1500px) and (min-width: 1201px) {
+  .worker {
+    width: 326px;
+    height: 527px;
+    bottom: 0;
+  }
+
+  .hero-inner {
+    padding-left: 328px;
+    padding-right: 58px;
+    grid-template-columns: minmax(430px, 1fr) 548px;
+    gap: 34px;
+  }
+
+  .hero-copy h1 {
+    font-size: 50px;
+  }
+
+  .hero-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    overflow: hidden;
+  }
+
+  .valuation-card {
+    width: calc(100vw - 28px) !important;
+    max-width: calc(100vw - 28px) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .hero-copy p {
+    text-align: left;
+    max-width: 570px;
+  }
+
+  .hero-points {
+    margin-left: 0;
+  }
+
+  .search-content {
+    padding-left: 92px;
+  }
+
+  .devices {
+    right: 34px;
+    width: 860px;
+  }
+
+  .bottom-worker {
+    width: 176px;
+    left: 56%;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-copy h1,
+  .valuation-card h2,
+  .valuation-card h3,
+  .search-copy h2,
+  .booking-body h3,
+  .bottom-cta-copy h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .hero-copy h1 {
+    max-width: min(100%, 520px);
+  }
+
+  .valuation-card {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .valuation-card h2 {
+    line-height: 1.08;
+  }
+}
+
+@media (max-width: 520px) {
+  body.voda-home {
+    min-width: 0;
+  }
+
+  .voda-nav {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .call-pill {
+    max-width: 128px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .worker {
+    display: none;
+  }
+
+  .hero-copy h1 {
+    max-width: 315px;
+    font-size: clamp(24px, 7.5vw, 30px);
+    line-height: 1.08;
+  }
+
+  .hero-copy p {
+    max-width: 330px;
+    font-size: 16px;
+  }
+
+  .hero-points {
+    max-width: 330px;
+  }
+
+  .valuation-card h2 {
+    font-size: clamp(21px, 6vw, 25px);
+    white-space: normal;
+  }
+
+  .valuation-card h3 {
+    font-size: clamp(24px, 6.8vw, 29px);
+    white-space: normal;
+  }
+
+  .valuation-card .subtitle,
+  .valuation-card .strong,
+  .valuation-card li {
+    overflow-wrap: anywhere;
   }
 }
