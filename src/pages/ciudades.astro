@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CityCard from '../components/CityCard.astro';
+import { ciudades } from '../data/content';
+---
+
+<Layout
+  title="Ciudades - LocalRank"
+  description="Posicionamiento local en las principales ciudades de España. Descubre las oportunidades de captación de clientes en tu localidad."
+>
+  <div class="bg-dark text-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Ciudades donde trabajamos</h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Conectamos a negocios con clientes en su localidad. Si tus clientes están en tu ciudad, nosotros te ayudamos a que te encuentren.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-16 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {ciudades.map(c => (
+          <CityCard slug={c.slug} name={c.name} image={c.image} desc={c.desc} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-50 text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">¿Trabajas en varias ciudades?</h2>
+      <p class="text-lg text-gray-600 mb-8">Diseñamos estrategias de captación multi-localización para empresas que dan servicio en diferentes zonas o tienen varias sucursales.</p>
+      <a href="/valoracion" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-primary hover:bg-primary-dark transition-colors shadow-md">
+        Solicitar plan personalizado
+      </a>
+    </div>
+  </section>
+</Layout>

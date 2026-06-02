@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { sectores, ciudades } from '../../data/content';
+
+export function getStaticPaths() {
+  return ciudades.map(ciudad => ({
+    params: { ciudad: ciudad.slug },
+    props: { ciudad },
+  }));
+}
+
+const { ciudad } = Astro.props;
+---
+
+<Layout
+  title={`Posicionamiento SEO Local en ${ciudad.name} - LocalRank`}
+  description={`Especialistas en captación de clientes en ${ciudad.name}. Haz que tu negocio local domine Google y Google Maps en tu ciudad.`}
+>
+  <div class="relative bg-dark text-white py-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-30">
+      <img src={ciudad.image} alt={`Vista de ${ciudad.name}`} class="w-full h-full object-cover" />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-dark/40"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">SEO Local en {ciudad.name}</h1>
+      <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+        Si tienes un negocio en {ciudad.name}, tus clientes te están buscando ahora mismo. {ciudad.desc}. ¿Apareces primero o se los lleva tu competencia?
+      </p>
+      <a href="/valoracion" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-dark bg-primary hover:bg-white transition-colors shadow-lg">
+        Analizar mi mercado en {ciudad.name}
+      </a>
+    </div>
+  </div>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Sectores con alta demanda en {ciudad.name}</h2>
+        <p class="text-lg text-gray-600">Selecciona tu sector para ver las oportunidades específicas en tu ciudad.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {sectores.map(s => (
+          <a href={`/sectores/${s.slug}-${ciudad.slug}`} class="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all p-6 border border-gray-100 flex flex-col items-center text-center h-full">
+            <span class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+              {s.icon}
+            </span>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{s.shortName}</h3>
+            <p class="text-sm text-gray-500 mb-4">{s.demand}</p>
+            <span class="mt-auto text-sm font-bold text-primary group-hover:text-primary-dark inline-flex items-center">
+              Ver potencial
+              <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

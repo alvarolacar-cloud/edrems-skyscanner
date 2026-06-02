@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSearch from '../components/HeroSearch.astro';
+import SectorCard from '../components/SectorCard.astro';
+import CityCard from '../components/CityCard.astro';
+import SuccessCard from '../components/SuccessCard.astro';
+import CrossCard from '../components/CrossCard.astro';
+import { sectores, ciudades, casosExito } from '../data/content';
+
+// Generate some sample crosses for the homepage
+const crosses = [
+  { s: sectores[1], c: ciudades[0] }, // Fontaneros Madrid
+  { s: sectores[4], c: ciudades[2] }, // Dentistas Valencia
+  { s: sectores[3], c: ciudades[1] }, // Abogados Barcelona
+  { s: sectores[0], c: ciudades[3] }, // Reformas Sevilla
+  { s: sectores[2], c: ciudades[4] }, // Electricistas Malaga
+  { s: sectores[6], c: ciudades[6] }, // Cerrajeros Alicante
+];
+---
+
+<Layout title="LocalRank - Tu Presencia Digital Local">
+  <HeroSearch />
+
+  <!-- Social Proof -->
+  <section class="py-12 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="flex justify-center items-center -space-x-4 mb-4">
+        <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="Cliente" />
+        <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="Cliente" />
+        <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Cliente" />
+        <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt="Cliente" />
+        <div class="w-12 h-12 rounded-full border-2 border-white bg-primary text-white flex items-center justify-center font-bold text-xs">+2k</div>
+      </div>
+      <p class="text-lg text-gray-800">
+        <strong class="font-bold">+2.456 negocios ya confían en nosotros</strong><br/>
+        <span class="text-gray-500">Únete a los que ya reciben más clientes cada mes.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Sectors Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+        <div>
+          <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Explora por sector</h2>
+          <p class="text-lg text-gray-600">Descubre oportunidades en tu sector y en tu ciudad.</p>
+        </div>
+        <a href="/sectores" class="text-primary hover:text-primary-dark font-medium inline-flex items-center">
+          Ver todos los sectores
+          <svg class="w-5 h-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sectores.slice(0, 6).map(s => (
+          <SectorCard slug={s.slug} name={s.name} icon={s.icon} image={s.image} demand={s.demand} subtitle={s.subtitle} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cities Section -->
+  <section class="py-16 bg-white border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+        <div>
+          <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Explora por ciudad</h2>
+          <p class="text-lg text-gray-600">Elige tu ciudad y descubre qué sectores tienen más demanda.</p>
+        </div>
+        <a href="/ciudades" class="text-primary hover:text-primary-dark font-medium inline-flex items-center">
+          Ver todas las ciudades
+          <svg class="w-5 h-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {ciudades.slice(0, 6).map(c => (
+          <CityCard slug={c.slug} name={c.name} image={c.image} desc={c.desc} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross Opportunities Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+        <div>
+          <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Oportunidades destacadas</h2>
+          <p class="text-lg text-gray-600">Combinaciones negocio + ciudad con alta demanda y posibilidades de crecimiento.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+        {crosses.map(cross => (
+          <CrossCard
+            sectorSlug={cross.s.slug}
+            ciudadSlug={cross.c.slug}
+            sectorName={cross.s.shortName}
+            ciudadName={cross.c.name}
+            image={cross.s.image}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Cases Section -->
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Casos de éxito reales</h2>
+        <p class="text-lg text-gray-600">Negocios locales que ya reciben más clientes gracias a nuestra estrategia en su ciudad.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {casosExito.map(caso => (
+          <SuccessCard name={caso.name} location={caso.location} metric={caso.metric} desc={caso.desc} />
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a href="/casos-exito" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+          Ver más casos de éxito
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-20 bg-dark text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-primary/10"></div>
+    <div class="relative max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">¿Quieres ser el referente de tu sector en tu ciudad?</h2>
+      <p class="text-xl text-gray-300 mb-10">Solicita una valoración gratuita y descubre el potencial real de captación que tiene tu negocio en Google.</p>
+      <a href="/valoracion" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-dark bg-primary hover:bg-white transition-colors shadow-lg hover:shadow-xl">
+        Solicita tu valoración gratuita
+      </a>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CityCard from '../../components/CityCard.astro';
+import { sectores, ciudades } from '../../data/content';
+
+export function getStaticPaths() {
+  return sectores.map(sector => ({
+    params: { sector: sector.slug },
+    props: { sector },
+  }));
+}
+
+const { sector } = Astro.props;
+---
+
+<Layout
+  title={`${sector.name} - SEO Local y Captación de Clientes`}
+  description={`Especialistas en captación de clientes y SEO local para ${sector.name.toLowerCase()}. Haz que tu negocio sea el más visible.`}
+>
+  <div class="relative bg-dark text-white py-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img src={sector.image} alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-dark/50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary mb-6 text-2xl font-bold">
+          {sector.icon}
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Captación de clientes para {sector.name}</h1>
+        <p class="text-xl text-gray-300 mb-8">
+          Aparece primero en Google cuando buscan servicios de {sector.name.toLowerCase()} en tu zona. {sector.demand}.
+        </p>
+        <a href="/valoracion" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-dark bg-primary hover:bg-white transition-colors shadow-lg">
+          Solicitar valoración para mi negocio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Descubre oportunidades para {sector.shortName} por ciudad</h2>
+        <p class="text-lg text-gray-600">Elige la ciudad donde prestas servicio y descubre el volumen de clientes que estás perdiendo.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {ciudades.map(c => (
+          <a href={`/sectores/${sector.slug}-${c.slug}`} class="group block relative rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all h-48 border border-gray-100">
+            <img src={c.image} alt={c.name} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80" />
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/90 to-dark/20 group-hover:from-primary/90 transition-colors"></div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+              <h3 class="text-xl font-bold mb-1">{sector.shortName} en {c.name}</h3>
+              <p class="text-sm text-gray-200 flex items-center">
+                Ver oportunidad <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

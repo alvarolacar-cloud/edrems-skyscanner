@@ -1,0 +1,37 @@
+---
+interface Props {
+  slug: string;
+  name: string;
+  icon: string;
+  image: string;
+  demand: string;
+  subtitle: string;
+}
+
+const { slug, name, icon, image, demand, subtitle } = Astro.props;
+---
+
+<a href={`/sectores/${slug}`} class="group block bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+  <div class="relative h-48 w-full overflow-hidden">
+    <img src={image} alt={`Sector ${name}`} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+    <div class="absolute bottom-4 left-4 right-4 text-white">
+      <div class="flex items-center space-x-2">
+        <span class="w-8 h-8 rounded-full bg-primary flex items-center justify-center font-bold text-sm shadow-md">
+          {icon}
+        </span>
+        <h3 class="font-bold text-lg leading-tight">{name}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="p-4">
+    <p class="text-sm font-semibold text-primary">{demand}</p>
+    <p class="text-sm text-gray-500 mt-1">{subtitle}</p>
+    <div class="mt-4 text-sm font-medium text-gray-900 group-hover:text-primary transition-colors flex items-center">
+      Explorar oportunidades
+      <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </div>
+  </div>
+</a>

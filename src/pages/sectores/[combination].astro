@@ -1,0 +1,108 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { sectores, ciudades, servicios } from '../../data/content';
+
+export function getStaticPaths() {
+  const paths: any[] = [];
+
+  sectores.forEach(sector => {
+    ciudades.forEach(ciudad => {
+      paths.push({
+        params: { combination: `${sector.slug}-${ciudad.slug}` },
+        props: { sector, ciudad },
+      });
+    });
+  });
+
+  return paths;
+}
+
+const { sector, ciudad } = Astro.props;
+---
+
+<Layout
+  title={`${sector.name} en ${ciudad.name} - Agencia SEO Local | LocalRank`}
+  description={`No soy una agencia genérica. Soy especialista en SEO local para ${sector.name.toLowerCase()} en ${ciudad.name}. Capta más clientes y llamadas cada día.`}
+>
+  <div class="relative bg-white pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+
+        <div class="mb-12 lg:mb-0">
+          <div class="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-4 py-2 mb-6 text-primary font-semibold text-sm">
+            <span class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+            </span>
+            <span>Alta demanda en {ciudad.name}</span>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6">
+            Especialistas en captación de clientes para <span class="text-primary">{sector.name.toLowerCase()} en {ciudad.name}</span>
+          </h1>
+
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            LocalRank <strong>NO es una agencia genérica</strong>. No somos una agencia de SEO que hace de todo; somos el especialista en SEO local enfocado en conseguir más llamadas y presupuestos para tu negocio de {sector.name.toLowerCase()} en la zona de {ciudad.name}.
+          </p>
+
+          <div class="bg-gray-50 border-l-4 border-primary p-6 rounded-r-lg mb-8 shadow-sm">
+            <h3 class="font-bold text-gray-900 text-lg mb-2">Datos de demanda local</h3>
+            <p class="text-gray-700">En {ciudad.name}, miles de personas buscan mensualmente "{sector.shortName.toLowerCase()} cerca de mi" o "{sector.shortName.toLowerCase()} en {ciudad.name}". Si no apareces en el Top 3 de Google Maps, tu competencia se está llevando esos clientes.</p>
+          </div>
+
+          <a href="/valoracion" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-primary hover:bg-primary-dark transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto">
+            Solicita tu valoración para {sector.shortName.toLowerCase()} en {ciudad.name}
+          </a>
+        </div>
+
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-tr from-primary to-primary-dark rounded-2xl transform rotate-3 opacity-20 scale-105"></div>
+          <img class="relative rounded-2xl shadow-2xl object-cover h-[500px] w-full" src={sector.image} alt={`${sector.name} trabajando en ${ciudad.name}`} />
+
+          <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100 hidden sm:block animate-bounce" style="animation-duration: 3s;">
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-gray-900">+Llamadas</p>
+                <p class="text-xs text-gray-500">Contactos diarios</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <section class="py-16 bg-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold mb-4">El sistema para {sector.shortName} en {ciudad.name}</h2>
+        <p class="text-lg text-gray-400">Todo lo que necesitas para dominar tu mercado local y no perder ni un cliente más.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {servicios.map((servicio, i) => (
+          <div class="bg-dark-light p-6 rounded-xl border border-gray-800">
+            <span class="text-primary font-black text-2xl mb-4 block">0{i+1}.</span>
+            <h3 class="text-xl font-bold mb-2">{servicio}</h3>
+            <p class="text-gray-400">Adaptado específicamente para empresas de {sector.name.toLowerCase()} en la zona de {ciudad.name}.</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-50 text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-6">¿Preparado para recibir más llamadas?</h2>
+      <p class="text-xl text-gray-600 mb-10">La valoración es 100% gratuita y sin compromiso. Te mostraremos exactamente cuánta gente te está buscando hoy mismo en {ciudad.name}.</p>
+      <a href="/valoracion" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-primary hover:bg-primary-dark transition-colors shadow-lg">
+        Solicita tu valoración para {sector.shortName}
+      </a>
+    </div>
+  </section>
+
+</Layout>

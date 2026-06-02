@@ -1,0 +1,22 @@
+---
+interface Props {
+  name: string;
+  location: string;
+  metric: string;
+  desc: string;
+}
+
+const { name, location, metric, desc } = Astro.props;
+---
+
+<article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-bl-full -mr-10 -mt-10"></div>
+  <div class="mb-4">
+    <h3 class="font-bold text-gray-900 text-lg leading-tight">{name}</h3>
+    <p class="text-sm text-gray-500">({location})</p>
+  </div>
+  <div class="mt-4">
+    <div class="text-3xl font-black text-primary mb-1">{metric}</div>
+    <p class="text-sm font-medium text-gray-700">{desc}</p>
+  </div>
+</article>
